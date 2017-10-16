@@ -1,0 +1,13 @@
+pragma solidity ^0.4.0;
+contract SendBack {
+    mapping (address => uint) userBalances;
+    uint sum=0;
+    function withdrawBalance(uint x) {  
+		uint amountToWithdraw = userBalances[msg.sender];
+		userBalances[msg.sender] = 0;
+		msg.sender.send(amountToWithdraw);
+        for (uint i = 0 ; i < x ; i++){
+             sum += i; 
+        }
+    }
+}

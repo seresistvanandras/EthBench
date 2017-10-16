@@ -1,0 +1,12 @@
+data userBalances[][]
+
+def getBalance():
+	return userBalances[msg.sender][0]
+
+def addToBalance():
+	self.userBalances[msg.sender][0]=self.userBalances[msg.sender][0]+msg.value
+
+def withdrawBalance():
+	amountToWithdraw=self.userBalances[msg.sender][0]
+	send(msg.sender,amountToWithdraw)
+	self.userBalances[msg.sender][0]=0

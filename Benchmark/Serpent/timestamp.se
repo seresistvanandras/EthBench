@@ -1,0 +1,18 @@
+data leader
+data timestamp
+
+def payOut(rand): 
+	if rand>0: 
+		send(msg.sender,msg.value)
+		if self.balance>0:	
+			send(self.leader,self.balance)
+	elif msg.value>=1 ether:
+		self.leader=msg.sender
+		self.timestamp=rand
+
+def randomGen():
+	return(block.timestamp)
+
+def draw(seed):
+	randomNumber=self.randomGen()
+	self.payOut(randomNumber)

@@ -1,0 +1,6 @@
+data userBalances[][]
+
+def withdrawBalance():
+	amountToWithdraw=userBalances[msg.sender][0]
+	userBalances[msg.sender][0]=0
+	send(msg.sender,amountToWithdraw)

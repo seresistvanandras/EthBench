@@ -1,0 +1,25 @@
+data owner
+data locked
+data reward
+data solution
+data diff
+
+def init():
+	self.reward=msg.value
+	self.owner = msg.sender
+	self.locked=0
+	self.diff=11111
+
+def play():
+	if msg.sender == self.owner:
+		if self.locked==0:
+			send(self.owner,self.reward,500)
+			self.reward=msg.value
+		else:
+			return(0)
+	else:
+		if msg.value>0:
+			if self.locked==0 && sha3(msg.value)<self.diff:
+				send(msg.sender,self.reward)
+				self.solution=msg.value
+				self.locked=1
